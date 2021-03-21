@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import RecentlyProducts from "../components/dashboard/RecentlyProducts";
 import globalStyles from "../styles";
 import Grid from "@material-ui/core/Grid";
-import Button from '@material-ui/core/Button';
+import hostName from '../constants';
 
 const DashboardPage = () => {
   const [books, setBooks] = useState([]);
@@ -10,33 +10,43 @@ const DashboardPage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    /*  fetch("https://api.example.com/items")
-        .then(res => res.json())
-        .then(
-          (result) => {
-            setIsLoaded(true);
-            setBooks(result);
-          },
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          });*/
-
-    const result = {
-      books: [
-        {
-          url: "https://google.com",
-          title: "Artiom blyat"
+    fetch(`${hostName}/library/books/`, { headers: { 'Bypass-Tunnel-Reminder': 's' } })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log(result)
+          setIsLoaded(true);
+          setBooks(result);
         },
-        {
-          url: "https://google.com",
-          title: "Artiom2 blyat"
+        (error) => {
+          console.log(error)
+          setIsLoaded(true);
+          setError(error);
+        });
+    /*
+        const result = {
+          books: [
+            {
+              url: "https://google.com",
+              title: "Artiom blyat"
+            },
+            {
+              url: "https://google.com",
+              title: "Artiom2 blyat"
+            },
+            {
+              url: "https://google.com",
+              title: "Artiom3 blyat"
+            },
+            {
+              url: "https://google.com",
+              title: "Artiom4 blyat"
+            }
+          ]
         }
-      ]
-    }
-
-    setBooks(result.books);
-    setIsLoaded(true);
+    
+        setBooks(result.books);
+        setIsLoaded(true);*/
   }, []);
   if (error) {
     return <div>Error: {error.message}</div>;

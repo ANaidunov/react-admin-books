@@ -96,7 +96,7 @@ const LoginPage = () => {
                   label="Remember me"
                 />
                 <Link to="/">
-                  <Button variant="contained" color="primary" style={styles.loginBtn}>
+                  <Button variant="contained" color="primary" type="submit" style={styles.loginBtn}>
                     Login
                   </Button>
                 </Link>

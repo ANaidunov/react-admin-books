@@ -77,6 +77,7 @@ class RecentlyProducts extends React.Component {
                 <Wallpaper />
               </Avatar>
               <ListItemText primary={item.title} secondary={item.text} />
+              <a href={item.url}>Download</a>
               <ListItemSecondaryAction>{iconButtonElement}</ListItemSecondaryAction>
             </ListItem>
           ))}
