@@ -40,7 +40,7 @@ class RecentlyProducts extends React.Component {
   };
 
   render() {
-    const { classes, data } = this.props;
+    const { classes, books } = this.props;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
@@ -68,10 +68,10 @@ class RecentlyProducts extends React.Component {
       <Paper>
         <List
           subheader={
-            <ListSubheader classes={{ root: classes.subheader }}>Recent Products</ListSubheader>
+            <ListSubheader classes={{ root: classes.subheader }}>My books</ListSubheader>
           }
         >
-          {data.map((item, idx) => (
+          {books.map((item, idx) => (
             <ListItem key={idx}>
               <Avatar style={{ marginRight: "10px" }}>
                 <Wallpaper />
@@ -87,7 +87,7 @@ class RecentlyProducts extends React.Component {
 }
 
 RecentlyProducts.propTypes = {
-  data: PropTypes.array,
+  books: PropTypes.array,
   classes: PropTypes.object
 };
 
